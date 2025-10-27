@@ -1,0 +1,220 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "admin123",
+      "name": "Administrator",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "username": "staff",
+      "password": "staff123",
+      "name": "Staff Operator",
+      "role": "staff"
+    }
+  ],
+  "customers": [
+    {
+      "id": "1",
+      "name": "Budi Santoso",
+      "phone": "08123456789",
+      "email": "budi@email.com",
+      "address": "Jl. Merdeka No. 123, Jakarta Pusat",
+      "registeredDate": "2024-01-15"
+    },
+    {
+      "id": "2",
+      "name": "Siti Aminah",
+      "phone": "08198765432",
+      "email": "siti@email.com",
+      "address": "Jl. Sudirman No. 456, Bandung",
+      "registeredDate": "2024-02-20"
+    },
+    {
+      "id": "3",
+      "name": "Ahmad Rizki",
+      "phone": "08567891234",
+      "email": "ahmad@email.com",
+      "address": "Jl. Gatot Subroto No. 789, Surabaya",
+      "registeredDate": "2024-03-10"
+    },
+    {
+      "id": "4",
+      "name": "Dewi Lestari",
+      "phone": "08234567890",
+      "email": "dewi@email.com",
+      "address": "Jl. Ahmad Yani No. 321, Semarang",
+      "registeredDate": "2024-04-05"
+    },
+    {
+      "id": "5",
+      "name": "Eko Prasetyo",
+      "phone": "08876543210",
+      "email": "eko@email.com",
+      "address": "Jl. Diponegoro No. 654, Yogyakarta",
+      "registeredDate": "2024-05-18"
+    }
+  ],
+  "packages": [
+    {
+      "id": "1",
+      "name": "Paket Hemat 1GB",
+      "quota": "1GB",
+      "duration": "7 Hari",
+      "price": 15000,
+      "description": "Paket hemat untuk browsing sehari-hari",
+      "speed": "Unlimited",
+      "category": "basic"
+    },
+    {
+      "id": "2",
+      "name": "Paket Reguler 3GB",
+      "quota": "3GB",
+      "duration": "14 Hari",
+      "price": 35000,
+      "description": "Paket reguler untuk kebutuhan normal",
+      "speed": "Unlimited",
+      "category": "regular"
+    },
+    {
+      "id": "3",
+      "name": "Paket Premium 10GB",
+      "quota": "10GB",
+      "duration": "30 Hari",
+      "price": 100000,
+      "description": "Paket premium untuk streaming dan gaming",
+      "speed": "Unlimited",
+      "category": "premium"
+    },
+    {
+      "id": "4",
+      "name": "Paket Unlimited Lite",
+      "quota": "Unlimited",
+      "duration": "30 Hari",
+      "price": 150000,
+      "description": "Internet unlimited dengan kecepatan 3Mbps",
+      "speed": "3 Mbps",
+      "category": "unlimited"
+    },
+    {
+      "id": "5",
+      "name": "Paket Super 25GB",
+      "quota": "25GB",
+      "duration": "30 Hari",
+      "price": 200000,
+      "description": "Super besar untuk kebutuhan maksimal",
+      "speed": "Unlimited",
+      "category": "premium"
+    },
+    {
+      "id": "6",
+      "name": "Paket Unlimited Plus",
+      "quota": "Unlimited",
+      "duration": "30 Hari",
+      "price": 250000,
+      "description": "Internet unlimited dengan kecepatan 10Mbps",
+      "speed": "10 Mbps",
+      "category": "unlimited"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "1",
+      "customerId": "1",
+      "customerName": "Budi Santoso",
+      "packageId": "3",
+      "packageName": "Paket Premium 10GB",
+      "quota": "10GB",
+      "price": 100000,
+      "transactionDate": "2024-10-25T10:30:00.000Z",
+      "status": "success",
+      "paymentMethod": "E-Wallet"
+    },
+    {
+      "id": "2",
+      "customerId": "2",
+      "customerName": "Siti Aminah",
+      "packageId": "2",
+      "packageName": "Paket Reguler 3GB",
+      "quota": "3GB",
+      "price": 35000,
+      "transactionDate": "2024-10-26T14:15:00.000Z",
+      "status": "success",
+      "paymentMethod": "Transfer Bank"
+    },
+    {
+      "id": "3",
+      "customerId": "3",
+      "customerName": "Ahmad Rizki",
+      "packageId": "4",
+      "packageName": "Paket Unlimited Lite",
+      "quota": "Unlimited",
+      "price": 150000,
+      "transactionDate": "2024-10-26T16:45:00.000Z",
+      "status": "success",
+      "paymentMethod": "Kartu Kredit"
+    },
+    {
+      "id": "4",
+      "customerId": "1",
+      "customerName": "Budi Santoso",
+      "packageId": "1",
+      "packageName": "Paket Hemat 1GB",
+      "quota": "1GB",
+      "price": 15000,
+      "transactionDate": "2024-10-27T09:20:00.000Z",
+      "status": "success",
+      "paymentMethod": "E-Wallet"
+    },
+    {
+      "id": "5",
+      "customerId": "4",
+      "customerName": "Dewi Lestari",
+      "packageId": "5",
+      "packageName": "Paket Super 25GB",
+      "quota": "25GB",
+      "price": 200000,
+      "transactionDate": "2024-10-27T11:00:00.000Z",
+      "status": "success",
+      "paymentMethod": "Tunai"
+    },
+    {
+      "id": "3ffc",
+      "customerId": "2",
+      "customerName": "Siti Aminah",
+      "packageId": "1",
+      "packageName": "Paket Hemat 1GB",
+      "quota": "1GB",
+      "price": 15000,
+      "transactionDate": "2025-10-27T11:51:10.917Z",
+      "status": "success",
+      "paymentMethod": "Transfer Bank"
+    },
+    {
+      "id": "50cd",
+      "customerId": "3",
+      "customerName": "Ahmad Rizki",
+      "packageId": "1",
+      "packageName": "Paket Hemat 1GB",
+      "quota": "1GB",
+      "price": 15000,
+      "transactionDate": "2025-10-27T13:23:48.414Z",
+      "status": "success",
+      "paymentMethod": "E-Wallet"
+    },
+    {
+      "id": "b6a2",
+      "customerId": "1",
+      "customerName": "Budi Santoso",
+      "packageId": "2",
+      "packageName": "Paket Reguler 3GB",
+      "quota": "3GB",
+      "price": 35000,
+      "transactionDate": "2025-10-27T13:28:43.587Z",
+      "status": "success",
+      "paymentMethod": "Tunai"
+    }
+  ]
+}
