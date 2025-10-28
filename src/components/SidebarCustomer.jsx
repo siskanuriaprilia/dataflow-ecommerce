@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Layout, Menu } from "antd";
-import { UserOutlined, HistoryOutlined, LogoutOutlined } from "@ant-design/icons";
+import { UserOutlined, HistoryOutlined, LogoutOutlined, ProfileOutlined } from "@ant-design/icons"; // Tambahkan ProfileOutlined
 import { useNavigate, useLocation } from "react-router-dom";
 
 const { Header } = Layout;
@@ -11,11 +11,13 @@ export default function TopNavbar() {
   const [selectedKey, setSelectedKey] = useState("dashboard-customers");
 
   useEffect(() => {
-    // sesuaikan selectedKey dengan path saat ini
+    // Sesuaikan selectedKey dengan path saat ini, termasuk path baru untuk profil
     if (location.pathname === "/dashboard-customers") {
       setSelectedKey("dashboard-customers");
     } else if (location.pathname === "/riwayat-transaksi") {
       setSelectedKey("riwayat-transaksi");
+    } else if (location.pathname === "/profil") { // Tambahkan kondisi untuk profil
+      setSelectedKey("profil");
     } else {
       setSelectedKey("");
     }
@@ -33,6 +35,7 @@ export default function TopNavbar() {
   const menuItems = [
     { key: "dashboard-customers", icon: <UserOutlined />, label: "Dashboard" },
     { key: "riwayat-transaksi", icon: <HistoryOutlined />, label: "Riwayat Transaksi" },
+    { key: "profil", icon: <ProfileOutlined />, label: "Profil" }, // Item menu baru untuk Profil
     { key: "logout", icon: <LogoutOutlined />, label: "Keluar" },
   ];
 

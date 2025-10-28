@@ -13,6 +13,7 @@ import PackagePage from "./pages/PackagesPage";
 // Customer Pages
 import DashboardCustomers from "./pages/DashboardCustomers";
 import RiwayatTransaksiCustomers from "./pages/RiwayatTransaksiCustomers";
+import Profil from "./pages/Profile.jsx";
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
         <Route path="/" element={<DashboardCustomers />} />
         <Route path="/dashboard-customers" element={<DashboardCustomers />} />
         <Route path="/riwayat-transaksi" element={<RiwayatTransaksiCustomers />} />
+         <Route path="/profil" element={<Profil />} /> {/* Route baru untuk Profil */}
+
 
       </Routes>
     </BrowserRouter>
