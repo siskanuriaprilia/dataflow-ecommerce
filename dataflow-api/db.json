@@ -348,6 +348,30 @@
       "transactionDate": "2025-10-28T12:40:38.652Z",
       "status": "success",
       "paymentMethod": "Transfer Bank"
+    },
+    {
+      "id": "1761662225356",
+      "customerId": "1",
+      "customerName": "Budi Santoso",
+      "packageId": "1",
+      "packageName": "Paket Hemat 1GB",
+      "quota": "1GB",
+      "price": 15000,
+      "transactionDate": "2025-10-28T14:37:05.356Z",
+      "status": "success",
+      "paymentMethod": "E-Wallet"
+    },
+    {
+      "id": "6da8",
+      "customerId": "1",
+      "customerName": "Budi Santoso",
+      "packageId": "6",
+      "packageName": "Paket Unlimited Plus",
+      "quota": "Unlimited",
+      "price": 250000,
+      "transactionDate": "2025-10-28T14:55:55.965Z",
+      "status": "success",
+      "paymentMethod": "Transfer Bank"
     }
   ]
 }
