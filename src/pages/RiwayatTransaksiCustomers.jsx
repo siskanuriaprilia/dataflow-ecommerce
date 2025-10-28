@@ -13,8 +13,18 @@ export default function RiwayatTransaksiCustomers() {
 
   const fetchTransactions = async () => {
     try {
+      // Ambil user yang login dari localStorage
+      const user = JSON.parse(localStorage.getItem("user"));
+
       const res = await fetch("http://localhost:3001/transactions");
-      setTransactions(await res.json());
+      const data = await res.json();
+
+      // Filter transaksi sesuai user yang login
+      const userTransactions = data.filter(
+        (t) => t.customerName === user.name
+      );
+
+      setTransactions(userTransactions);
     } catch (error) {
       message.error("Gagal memuat transaksi");
     }
@@ -24,7 +34,21 @@ export default function RiwayatTransaksiCustomers() {
     { title: "ID Transaksi", dataIndex: "id", key: "id" },
     { title: "Paket", dataIndex: "packageName", key: "packageName" },
     { title: "Harga", dataIndex: "price", key: "price" },
-    { title: "Tanggal", dataIndex: "date", key: "date" },
+    {
+      title: "Tanggal",
+      dataIndex: "transactionDate",
+      key: "transactionDate",
+      render: (text) =>
+        new Date(text).toLocaleString("id-ID", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+    },
+    { title: "Status", dataIndex: "status", key: "status" },
+    { title: "Metode Pembayaran", dataIndex: "paymentMethod", key: "paymentMethod" },
   ];
 
   return (

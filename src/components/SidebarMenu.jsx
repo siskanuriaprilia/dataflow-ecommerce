@@ -18,7 +18,7 @@ export default function SidebarMenu({ defaultKey = "dashboard" }) {
   const handleMenuClick = (key) => {
     if (key === "logout") {
       localStorage.removeItem("user");
-      navigate("/");
+      navigate("/login");
     } else {
       navigate(`/${key}`);
     }

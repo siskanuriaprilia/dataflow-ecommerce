@@ -27,12 +27,16 @@ export default function LoginPage() {
       if (users.length > 0) {
         const user = users[0];
         message.success(`Selamat datang, ${user.name}!`);
-        localStorage.setItem('user', JSON.stringify(user));
+       localStorage.setItem(
+  "user",
+  JSON.stringify({ id: "1", name: "Budi Santoso", role: user.role }) 
+);
+
 
         if (user.role === 'admin') {
           navigate('/dashboard');
-        } else if (user.role === 'staff') {
-          navigate('/customers');
+        } else if (user.role === 'customer') {
+          navigate('/dashboard-customers');
         }
       } else {
         message.error('Username atau password salah');
