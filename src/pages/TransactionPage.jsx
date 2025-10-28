@@ -3,9 +3,9 @@ import {
   Layout, Table, Card, message, Modal, Button, Form, Select, Space, Tag, Typography, Popconfirm, Row, Col, Statistic,
 } from "antd";
 import {
-  EditOutlined, DeleteOutlined, PlusOutlined, DollarOutlined,
+  EditOutlined, DeleteOutlined, PlusOutlined, DollarOutlined,RiseOutlined
 } from "@ant-design/icons";
-import SidebarMenu from "../components/SidebarMenu"; // ✅ import sidebar
+import SidebarMenu from "../components/SidebarMenu";
 import { useNavigate } from "react-router-dom";
 
 const { Text, Title } = Typography;
@@ -163,67 +163,107 @@ export default function TransactionPage() {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      {/* ✅ Sidebar terpisah */}
       <SidebarMenu defaultKey="transactions" />
 
-      <Layout>
-        <Content style={{ padding: 24, background: "#f0f2f5" }}>
-          {/* Header Section - Mirip Dashboard */}
-          <div
-            style={{
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              padding: '24px',
-              borderRadius: '12px',
-              marginBottom: '24px',
-              color: 'white',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-            }}
-          >
-            <Title level={2} style={{ color: 'white', margin: 0 }}>
-              Transaksi
-            </Title>
-            <Text style={{ color: 'rgba(255,255,255,0.8)' }}>
-              Kelola dan pantau semua transaksi pelanggan
+     <Layout>
+              <Content style={{ padding: 24, background: "#f0f2f5" }}>
+                {/* Header Section */}
+                <div
+                  style={{
+                    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                    padding: 32,
+                    borderRadius: 16,
+                    marginBottom: 24,
+                    color: "white",
+                    boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+                    position: "relative",
+                    overflow: "hidden",
+                  }}
+                >
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: -50,
+                      right: -50,
+                      width: 200,
+                      height: 200,
+                      background: "rgba(255,255,255,0.1)",
+                      borderRadius: "50%",
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: -30,
+                      left: -30,
+                      width: 150,
+                      height: 150,
+                      background: "rgba(255,255,255,0.08)",
+                      borderRadius: "50%",
+                    }}
+                  />
+      
+                  <div style={{ position: "relative", zIndex: 1 }}>
+                    <Title level={2} style={{ color: "white", margin: 0, marginBottom: 8 }}>
+                      💰 Daftar Transaksi
+                    </Title>
+                    <Text style={{ color: "rgba(255,255,255,0.95)", fontSize: 16 }}>
+                      Kelola dan pantau semua transaksi pelanggan
+                    </Text>
+                  </div>
+                </div>
+
+         {/* Statistics Cards - Mirip Dashboard */}
+<Row gutter={16} style={{ marginBottom: "24px" }}>
+  {/* Total Transaksi */}
+  <Col xs={24} sm={12} md={8}>
+    <Card
+      style={{
+        borderRadius: "12px",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+        textAlign: "left",
+      }}
+    >
+      <Statistic
+        title="Total Transaksi"
+        value={totalTransactions}
+        prefix={<DollarOutlined />}
+        valueStyle={{ color: "#667eea" }}
+      />
+      <div style={{ marginTop: 8 }}>
+        <RiseOutlined style={{ color: "#52c41a" }} />
+        <Text type="secondary" style={{ marginLeft: 8 }}>
+          +8% bulan ini
+        </Text>
+      </div>
+    </Card>
+  </Col>
+
+      {/* Total Pendapatan */}
+      <Col xs={24} sm={12} md={8}>
+        <Card
+          style={{
+            borderRadius: "12px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            textAlign: "left",
+          }}
+        >
+          <Statistic
+            title="Total Pendapatan"
+            value={totalRevenue}
+            prefix="Rp"
+            valueStyle={{ color: "#52c41a" }}
+            formatter={(value) => value.toLocaleString("id-ID")}
+          />
+          <div style={{ marginTop: 8 }}>
+            <RiseOutlined style={{ color: "#52c41a" }} />
+            <Text type="secondary" style={{ marginLeft: 8 }}>
+              +12% bulan ini
             </Text>
           </div>
-
-          {/* Statistics Cards - Mirip Dashboard */}
-          <Row gutter={16} style={{ marginBottom: '24px' }}>
-            <Col xs={24} sm={12} md={8}>
-              <Card
-                style={{
-                  borderRadius: '12px',
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-                  textAlign: 'center',
-                }}
-              >
-                <Statistic
-                  title="Total Transaksi"
-                  value={totalTransactions}
-                  prefix={<DollarOutlined />}
-                  valueStyle={{ color: '#667eea' }}
-                />
-              </Card>
-            </Col>
-            <Col xs={24} sm={12} md={8}>
-              <Card
-                style={{
-                  borderRadius: '12px',
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-                  textAlign: 'center',
-                }}
-              >
-                <Statistic
-                  title="Total Pendapatan"
-                  value={totalRevenue}
-                  prefix="Rp"
-                  valueStyle={{ color: '#52c41a' }}
-                  formatter={(value) => value.toLocaleString("id-ID")}
-                />
-              </Card>
-            </Col>
-            {/* Tambahkan statistik lain jika diperlukan */}
-          </Row>
+        </Card>
+      </Col>
+    </Row>
 
           {/* Transaction Management */}
           <Card
