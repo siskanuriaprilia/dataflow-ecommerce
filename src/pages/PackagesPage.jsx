@@ -7,8 +7,11 @@ import {
   Typography,
   message,
   Tag,
+  Row,
+  Col,
+  Statistic,
 } from "antd";
-import { ShoppingCartOutlined } from "@ant-design/icons";
+import { ShoppingCartOutlined, WifiOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import SidebarMenu from "../components/SidebarMenu";
 
@@ -44,6 +47,47 @@ export default function PackagePage() {
 
       <Layout>
         <Content style={{ padding: 24, background: "#f0f2f5" }}>
+          {/* Header Section - Mirip Dashboard */}
+          <div
+            style={{
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              padding: '24px',
+              borderRadius: '12px',
+              marginBottom: '24px',
+              color: 'white',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+            }}
+          >
+            <Title level={2} style={{ color: 'white', margin: 0 }}>
+              Paket Data
+            </Title>
+            <Text style={{ color: 'rgba(255,255,255,0.8)' }}>
+              Jelajahi dan pilih paket data terbaik untuk kebutuhan Anda
+            </Text>
+          </div>
+
+          {/* Statistics Cards - Mirip Dashboard */}
+          <Row gutter={16} style={{ marginBottom: '24px' }}>
+            <Col xs={24} sm={12} md={8}>
+              <Card
+                style={{
+                  borderRadius: '12px',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                  textAlign: 'center',
+                }}
+              >
+                <Statistic
+                  title="Total Paket"
+                  value={packages.length}
+                  prefix={<WifiOutlined />}
+                  valueStyle={{ color: '#667eea' }}
+                />
+              </Card>
+            </Col>
+            {/* Tambahkan statistik lain jika diperlukan, misalnya paket terlaris, dll. */}
+          </Row>
+
+          {/* Package List */}
           <Card
             title="Daftar Paket Data"
             style={{ borderRadius: 12, boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}
@@ -61,6 +105,10 @@ export default function PackagePage() {
                         type="primary"
                         icon={<ShoppingCartOutlined />}
                         onClick={() => handleBuyPackage(pkg)}
+                        style={{
+                          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                          border: 'none',
+                        }}
                       >
                         Beli Paket
                       </Button>,

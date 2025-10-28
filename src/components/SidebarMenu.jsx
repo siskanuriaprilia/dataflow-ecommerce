@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Layout, Menu } from "antd";
 import {
   DashboardOutlined,
@@ -14,7 +14,6 @@ const { Sider } = Layout;
 
 export default function SidebarMenu({ defaultKey = "dashboard" }) {
   const navigate = useNavigate();
-  const [collapsed, setCollapsed] = useState(false); // State untuk menangani collapse
 
   const handleMenuClick = (key) => {
     if (key === "logout") {
@@ -30,8 +29,6 @@ export default function SidebarMenu({ defaultKey = "dashboard" }) {
       <Sider 
         theme="light" 
         collapsible
-        collapsed={collapsed}
-        onCollapse={setCollapsed}
         breakpoint="lg"
         collapsedWidth="80"
         style={{
@@ -76,26 +73,22 @@ export default function SidebarMenu({ defaultKey = "dashboard" }) {
             borderRadius: '12px',
             background: 'rgba(255, 255, 255, 0.2)',
             backdropFilter: 'blur(10px)',
-            marginBottom: collapsed ? '0' : '12px', // Sesuaikan margin bottom saat collapsed
+            marginBottom: '12px',
             boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
           }}>
             <WifiOutlined style={{ fontSize: '24px', color: 'white' }} />
           </div>
-          {!collapsed && ( // Hanya tampilkan teks jika tidak collapsed
-            <>
-              <div style={{ fontSize: '16px', letterSpacing: '0.5px' }}>
-                Admin Panel
-              </div>
-              <div style={{ 
-                fontSize: '11px', 
-                fontWeight: '400', 
-                opacity: 0.8,
-                marginTop: '4px'
-              }}>
-                E-Commerce Data
-              </div>
-            </>
-          )}
+          <div style={{ fontSize: '16px', letterSpacing: '0.5px' }}>
+            Admin Panel
+          </div>
+          <div style={{ 
+            fontSize: '11px', 
+            fontWeight: '400', 
+            opacity: 0.8,
+            marginTop: '4px'
+          }}>
+            E-Commerce Data
+          </div>
         </div>
 
         {/* Menu Items */}

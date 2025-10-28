@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import {
   Layout,
   Card,
-  List,
-  Avatar,
-  Button,
+  Table,
   Typography,
   message,
-  Space,
+  Row,
+  Col,
+  Statistic,
+  Input,
 } from "antd";
-import { UserOutlined, ShoppingCartOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import { TeamOutlined, SearchOutlined } from "@ant-design/icons";
 import SidebarMenu from "../components/SidebarMenu"; // ✅ Sidebar terpisah
 
 const { Content } = Layout;
@@ -18,11 +18,16 @@ const { Title, Text } = Typography;
 
 export default function CustomerPage() {
   const [customers, setCustomers] = useState([]);
-  const navigate = useNavigate();
+  const [filteredCustomers, setFilteredCustomers] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchCustomers();
   }, []);
+
+  useEffect(() => {
+    filterCustomers();
+  }, [customers, searchText]);
 
   const fetchCustomers = async () => {
     try {
@@ -34,9 +39,37 @@ export default function CustomerPage() {
     }
   };
 
-  const handleBuyPackage = (customer) => {
-    navigate(`/transactions?customerId=${customer.id}`);
+  const filterCustomers = () => {
+    const filtered = customers.filter(
+      (customer) =>
+        customer.name.toLowerCase().includes(searchText.toLowerCase()) ||
+        customer.email.toLowerCase().includes(searchText.toLowerCase()) ||
+        customer.phone.includes(searchText)
+    );
+    setFilteredCustomers(filtered);
   };
+
+  // Kolom untuk tabel pelanggan
+  const customerColumns = [
+    {
+      title: "Nama",
+      dataIndex: "name",
+      key: "name",
+      render: (text) => <Text strong>{text}</Text>,
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+      render: (text) => <Text type="secondary">{text}</Text>,
+    },
+    {
+      title: "Telepon",
+      dataIndex: "phone",
+      key: "phone",
+      render: (text) => <Text type="secondary">{text}</Text>,
+    },
+  ];
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -46,6 +79,47 @@ export default function CustomerPage() {
       {/* 🔹 Main Content */}
       <Layout>
         <Content style={{ padding: 24, background: "#f0f2f5" }}>
+          {/* Header Section - Mirip Dashboard */}
+          <div
+            style={{
+              background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+              padding: 24,
+              borderRadius: 12,
+              marginBottom: 24,
+              color: "white",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            }}
+          >
+            <Title level={2} style={{ color: "white", margin: 0 }}>
+              Pelanggan
+            </Title>
+            <Text style={{ color: "rgba(255,255,255,0.8)" }}>
+              Kelola dan pantau data pelanggan Anda
+            </Text>
+          </div>
+
+          {/* Statistics Cards - Mirip Dashboard */}
+          <Row gutter={16} style={{ marginBottom: 24 }}>
+            <Col xs={24} sm={12} md={8}>
+              <Card
+                style={{
+                  borderRadius: 12,
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                  textAlign: "center",
+                }}
+              >
+                <Statistic
+                  title="Total Pelanggan"
+                  value={customers.length}
+                  prefix={<TeamOutlined />}
+                  suffix=" pelanggan"
+                  valueStyle={{ color: "#667eea" }}
+                />
+              </Card>
+            </Col>
+          </Row>
+
+          {/* Customer Table */}
           <Card
             title="Daftar Pelanggan"
             style={{
@@ -53,37 +127,26 @@ export default function CustomerPage() {
               boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
             }}
           >
-            <List
-              grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4 }}
-              dataSource={customers}
-              renderItem={(customer) => (
-                <List.Item>
-                  <Card
-                    hoverable
-                    style={{ borderRadius: 8, textAlign: "center" }}
-                    actions={[
-                      <Button
-                        type="primary"
-                        icon={<ShoppingCartOutlined />}
-                        onClick={() => handleBuyPackage(customer)}
-                      >
-                        Beli Paket
-                      </Button>,
-                    ]}
-                  >
-                    <Avatar
-                      size={64}
-                      icon={<UserOutlined />}
-                      style={{ marginBottom: 16 }}
-                    />
-                    <Text strong>{customer.name}</Text>
-                    <br />
-                    <Text type="secondary">Email: {customer.email}</Text>
-                    <br />
-                    <Text type="secondary">Phone: {customer.phone}</Text>
-                  </Card>
-                </List.Item>
-              )}
+            {/* Search Global */}
+            <Input
+              placeholder="Cari pelanggan..."
+              prefix={<SearchOutlined />}
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              style={{
+                marginBottom: 16,
+                width: "100%",
+                maxWidth: 300,
+                borderRadius: 8,
+              }}
+              allowClear
+            />
+
+            <Table
+              columns={customerColumns}
+              dataSource={filteredCustomers}
+              rowKey="id"
+              pagination={{ pageSize: 8 }}
             />
           </Card>
         </Content>

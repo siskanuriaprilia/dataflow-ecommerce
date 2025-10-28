@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import {
-  Layout, Table, Card, message, Modal, Button, Form, Select, Space, Tag, Typography, Popconfirm,
+  Layout, Table, Card, message, Modal, Button, Form, Select, Space, Tag, Typography, Popconfirm, Row, Col, Statistic,
 } from "antd";
 import {
-  EditOutlined, DeleteOutlined, PlusOutlined,
+  EditOutlined, DeleteOutlined, PlusOutlined, DollarOutlined,
 } from "@ant-design/icons";
 import SidebarMenu from "../components/SidebarMenu"; // ✅ import sidebar
 import { useNavigate } from "react-router-dom";
 
-const { Text } = Typography;
+const { Text, Title } = Typography;
 const { Content } = Layout;
 const { Option } = Select;
 
@@ -106,6 +106,10 @@ export default function TransactionPage() {
     setLoading(false);
   };
 
+  // Hitung statistik
+  const totalTransactions = transactions.length;
+  const totalRevenue = transactions.reduce((sum, t) => sum + t.price, 0);
+
   const transactionColumns = [
     {
       title: "Tanggal",
@@ -164,10 +168,76 @@ export default function TransactionPage() {
 
       <Layout>
         <Content style={{ padding: 24, background: "#f0f2f5" }}>
+          {/* Header Section - Mirip Dashboard */}
+          <div
+            style={{
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              padding: '24px',
+              borderRadius: '12px',
+              marginBottom: '24px',
+              color: 'white',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+            }}
+          >
+            <Title level={2} style={{ color: 'white', margin: 0 }}>
+              Transaksi
+            </Title>
+            <Text style={{ color: 'rgba(255,255,255,0.8)' }}>
+              Kelola dan pantau semua transaksi pelanggan
+            </Text>
+          </div>
+
+          {/* Statistics Cards - Mirip Dashboard */}
+          <Row gutter={16} style={{ marginBottom: '24px' }}>
+            <Col xs={24} sm={12} md={8}>
+              <Card
+                style={{
+                  borderRadius: '12px',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                  textAlign: 'center',
+                }}
+              >
+                <Statistic
+                  title="Total Transaksi"
+                  value={totalTransactions}
+                  prefix={<DollarOutlined />}
+                  valueStyle={{ color: '#667eea' }}
+                />
+              </Card>
+            </Col>
+            <Col xs={24} sm={12} md={8}>
+              <Card
+                style={{
+                  borderRadius: '12px',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                  textAlign: 'center',
+                }}
+              >
+                <Statistic
+                  title="Total Pendapatan"
+                  value={totalRevenue}
+                  prefix="Rp"
+                  valueStyle={{ color: '#52c41a' }}
+                  formatter={(value) => value.toLocaleString("id-ID")}
+                />
+              </Card>
+            </Col>
+            {/* Tambahkan statistik lain jika diperlukan */}
+          </Row>
+
+          {/* Transaction Management */}
           <Card
             title="Manajemen Transaksi"
             extra={
-              <Button type="primary" icon={<PlusOutlined />} onClick={openAddModal}>
+              <Button 
+                type="primary" 
+                icon={<PlusOutlined />} 
+                onClick={openAddModal}
+                style={{
+                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  border: 'none',
+                }}
+              >
                 Tambah Transaksi
               </Button>
             }
@@ -222,7 +292,15 @@ export default function TransactionPage() {
               <Form.Item>
                 <Space style={{ justifyContent: "end", width: "100%" }}>
                   <Button onClick={() => setModalVisible(false)}>Batal</Button>
-                  <Button type="primary" htmlType="submit" loading={loading}>
+                  <Button 
+                    type="primary" 
+                    htmlType="submit" 
+                    loading={loading}
+                    style={{
+                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      border: 'none',
+                    }}
+                  >
                     Simpan
                   </Button>
                 </Space>

@@ -146,18 +146,6 @@
   ],
   "transactions": [
     {
-      "customerId": "5",
-      "customerName": "Eko Prasetyo",
-      "packageId": "2",
-      "packageName": "Paket Reguler 3GB",
-      "quota": "3GB",
-      "price": 35000,
-      "transactionDate": "2025-10-27T14:35:33.451Z",
-      "status": "success",
-      "paymentMethod": "E-Wallet",
-      "id": "2"
-    },
-    {
       "id": "3",
       "customerId": "3",
       "customerName": "Ahmad Rizki",
@@ -240,6 +228,30 @@
       "transactionDate": "2025-10-28T02:09:37.550Z",
       "status": "success",
       "paymentMethod": "E-Wallet"
+    },
+    {
+      "id": "81a0",
+      "customerId": "2",
+      "customerName": "Siti Aminah",
+      "packageId": "1",
+      "packageName": "Paket Hemat 1GB",
+      "quota": "1GB",
+      "price": 15000,
+      "transactionDate": "2025-10-28T03:11:20.472Z",
+      "status": "success",
+      "paymentMethod": "Transfer Bank"
+    },
+    {
+      "id": "d5dc",
+      "customerId": "3",
+      "customerName": "Ahmad Rizki",
+      "packageId": "1",
+      "packageName": "Paket Hemat 1GB",
+      "quota": "1GB",
+      "price": 15000,
+      "transactionDate": "2025-10-28T03:32:22.324Z",
+      "status": "success",
+      "paymentMethod": "Transfer Bank"
     }
   ]
 }
