@@ -59,3 +59,13 @@ Admin memiliki akses penuh untuk mengelola data pelanggan, paket, dan transaksi.
 
 ---
 
+# Dokumentasi Fitur Aplikasi 
+
+| Halaman | Screenshot | Deskripsi Fitur |
+|---------|------------|----------------|
+| **Login Page** | ![Login Page](public/screenshots/login.png) | Halaman Login Page ini berfungsi sebagai pintu masuk ke dashboard aplikasi untuk pengguna dengan berbagai peran, termasuk **admin** dan **customer**. Halaman ini menampilkan **formulir login interaktif** yang meminta username dan password, dilengkapi validasi input agar tidak kosong. Pengguna dapat masuk ke dashboard sesuai peran masing-masing: admin diarahkan ke dashboard utama, sedangkan customer diarahkan ke dashboard pelanggan. |
+| **Dashboard Customer** | ![Dashboard Customer](public/screenshots/dashboardcustomers1.png)  <br> ![Dashboard Customer 2](public/screenshots/dashboardcustomers2.png) | Halaman Dashboard customer ini menampilkan berbagai informasi penting, seperti **total pembelian**, **level membership**, dan daftar **paket internet** yang tersedia. Selain itu, halaman ini dilengkapi dengan fitur interaktif berupa **modal pembelian paket**, di mana pengguna dapat memilih paket internet, mengonfirmasi pembelian, serta menentukan metode pembayaran yang diinginkan. |
+| **Riwayat Transaksi Customer** | ![Riwayat Transaksi](public/screenshots/riwayattransaksicustomers.png) | Halaman Riwayat Transaksi Customer menampilkan semua informasi terkait transaksi pelanggan, termasuk **ID transaksi**, **paket yang dibeli**, **kuota**, **harga**, **tanggal**, **status transaksi**, dan **metode pembayaran**. Halaman ini juga menyediakan fitur interaktif untuk mencari transaksi, memfilter berdasarkan status dan metode pembayaran, serta menampilkan statistik seperti **total transaksi**, **transaksi berhasil**, **total pengeluaran**, dan **rata-rata pengeluaran**. |
+| **Profil Customer** | ![Profil Customer](public/screenshots/profilcustomers1.png) <br> ![Profil Customer 2](public/screenshots/profilcustomers2.png) | Halaman Profil Customer menampilkan informasi pribadi pengguna, termasuk **nama lengkap**, **email**, dan **peran (role)** pengguna. Halaman ini dilengkapi dengan fitur **edit profil**, di mana pengguna dapat mengubah nama dan email melalui formulir interaktif, serta menyimpan atau membatalkan perubahan dengan mudah. Selain itu, halaman juga menampilkan statistik akun seperti **total transaksi**, **total pengeluaran**, dan **poin loyalitas**, serta aktivitas terbaru pengguna seperti **login**, **pembelian**, dan **pembaruan profil**. |
+
+---
