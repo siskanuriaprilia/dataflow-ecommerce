@@ -276,6 +276,30 @@
       "transactionDate": "2025-10-28T04:14:33.829Z",
       "status": "success",
       "paymentMethod": "Transfer Bank"
+    },
+    {
+      "id": "1761627979364",
+      "customerId": "1",
+      "customerName": "Budi Santoso",
+      "packageId": "1",
+      "packageName": "Paket Hemat 1GB",
+      "quota": "1GB",
+      "price": 15000,
+      "transactionDate": "2025-10-28T05:06:19.364Z",
+      "status": "success",
+      "paymentMethod": "E-Wallet"
+    },
+    {
+      "id": "1761628159251",
+      "customerId": "1",
+      "customerName": "Budi Santoso",
+      "packageId": "1",
+      "packageName": "Paket Hemat 1GB",
+      "quota": "1GB",
+      "price": 15000,
+      "transactionDate": "2025-10-28T05:09:19.251Z",
+      "status": "success",
+      "paymentMethod": "Kartu Kredit"
     }
   ]
 }

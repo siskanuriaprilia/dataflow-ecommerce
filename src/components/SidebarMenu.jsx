@@ -128,7 +128,7 @@ export default function SidebarMenu({ defaultKey = "dashboard" }) {
               key: "logout", 
               icon: <LogoutOutlined style={{ fontSize: '18px' }} />, 
               label: <span style={{ fontSize: '15px', fontWeight: '500' }}>Keluar</span>,
-              style: { marginTop: '24px' }
+            
             },
           ]}
         />
