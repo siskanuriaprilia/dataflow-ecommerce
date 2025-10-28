@@ -14,6 +14,7 @@ import {
   WalletOutlined,
   BankOutlined,
   MobileOutlined,
+  RocketOutlined
 } from "@ant-design/icons";
 import SidebarCustomer from "../components/SidebarCustomer";
 
@@ -203,7 +204,7 @@ export default function RiwayatTransaksiCustomers() {
       key: "status",
       render: (status) => (
         <Tag
-          icon={getStatusIcon(status)}
+          icon={getStatusIcon(status)}  
           color={getStatusColor(status)}
           style={{
             borderRadius: 8,
@@ -236,28 +237,35 @@ export default function RiwayatTransaksiCustomers() {
   ];
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
-      <SidebarCustomer defaultKey="riwayat-transaksi" />
-      <Layout style={{ background: "#f0f2f5", minHeight: "100vh" }}>
-        <Content style={{ padding: "24px", margin: 0 }}>
-          {/* Header dengan Gradient */}
-          <div
-            style={{
-              marginBottom: "24px",
-              background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-              padding: "32px",
-              borderRadius: "20px",
-              color: "white",
-              boxShadow: "0 8px 32px rgba(102, 126, 234, 0.4)",
-            }}
-          >
-            <Title level={2} style={{ margin: 0, color: "white" }}>
-              Riwayat Transaksi
-            </Title>
-            <Text style={{ fontSize: 16, color: "rgba(255,255,255,0.9)" }}>
-              Lihat semua riwayat pembelian dan transaksi Anda
-            </Text>
+  <Layout style={{ minHeight: "100vh" }}>
+    <SidebarCustomer defaultKey="riwayat-transaksi" />
+    <Layout style={{ background: "#f0f2f5", minHeight: "100vh" }}>
+      <Content style={{ padding: "24px", margin: 0 }}>
+        {/* Header dengan Gradient */}
+        <div
+          style={{
+            position: "relative",
+            marginBottom: "24px",
+            background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+            padding: "32px",
+            borderRadius: "20px",
+            color: "white",
+            boxShadow: "0 8px 32px rgba(102, 126, 234, 0.4)",
+            overflow: "hidden",
+          }}
+        >
+          <div style={{ position: "absolute", top: 0, right: 0, opacity: 0.1 }}>
+            <ShoppingCartOutlined style={{ fontSize: "185px" }} />
           </div>
+
+          {/* Konten Header */}
+          <Title level={2} style={{ margin: 0, color: "white", position: "relative", zIndex: 1 }}>
+            Riwayat Transaksi
+          </Title>
+          <Text style={{ fontSize: 16, color: "rgba(255,255,255,0.9)", position: "relative", zIndex: 1 }}>
+            Lihat semua riwayat pembelian dan transaksi Anda
+          </Text>
+        </div>
 
           {/* Statistics Cards */}
           <Row gutter={[16, 16]} style={{ marginBottom: 24 }}>
@@ -285,7 +293,7 @@ export default function RiwayatTransaksiCustomers() {
                 style={{
                   borderRadius: "16px",
                   border: "none",
-                  background: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
+                  background: "linear-gradient(135deg, #8ded92ff 0%, #177d14ff 100%)",
                   boxShadow: "0 4px 20px rgba(67, 233, 123, 0.3)",
                 }}
               >
@@ -447,53 +455,46 @@ export default function RiwayatTransaksiCustomers() {
         }
 
         .ant-table-thead > tr > th {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-          color: white !important;
+        background: #ffffffff !important;
+        color: #333 !important; /* teks hitam/gelap */
+        font-weight: 600 !important;
+        border-bottom: 1px solid #bab4b4ff !important; /* garis tipis bawah */
+      }
+
+      .ant-table-tbody > tr:hover > td {
+        background: rgba(0,0,0,0.03) !important;
+      }
+
+
+            /* Header */
+        .ant-table-thead > tr > th {
+          background: #ffffffff !important;
+          color: #333 !important;
           font-weight: 600 !important;
-          border: none !important;
+          border-bottom: 1px solid #bab4b4ff !important; /* garis bawah header */
         }
 
+        /* Body */
+        .ant-table-tbody > tr > td {
+          border-bottom: 1px solid #e0e0e0 !important; /* garis antar baris */
+          border-right: 1px solid #e0e0e0 !important; /* garis antar kolom */
+        }
+
+        /* Hilangkan border kanan terakhir di setiap baris */
+        .ant-table-tbody > tr > td:last-child {
+          border-right: none !important;
+        }
+
+        /* Garis antar header kolom */
+        .ant-table-thead > tr > th:not(:last-child) {
+          border-right: 1px solid #e0e0e0 !important;
+        }
+
+        /* Hover tetap bagus */
         .ant-table-tbody > tr:hover > td {
-          background: rgba(102, 126, 234, 0.05) !important;
+          background: rgba(0,0,0,0.03) !important;
         }
 
-        .ant-card-hoverable:hover {
-          transform: translateY(-4px);
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .ant-table-cell {
-          padding: 16px !important;
-        }
-
-        @media (max-width: 991px) {
-          .ant-layout-content {
-            padding: 80px 16px 16px !important;
-          }
-        }
-
-        @media (max-width: 576px) {
-          .ant-statistic-content-value {
-            font-size: 24px !important;
-          }
-        }
-
-        .ant-select-selector {
-          border-radius: 8px !important;
-        }
-
-        .ant-input {
-          border-radius: 8px !important;
-        }
-
-        .ant-btn {
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .ant-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
       `}</style>
     </Layout>
   );

@@ -33,9 +33,7 @@ function App() {
         <Route path="/" element={<DashboardCustomers />} />
         <Route path="/dashboard-customers" element={<DashboardCustomers />} />
         <Route path="/riwayat-transaksi" element={<RiwayatTransaksiCustomers />} />
-         <Route path="/profil" element={<Profil />} /> {/* Route baru untuk Profil */}
-
-
+         <Route path="/profil" element={<Profil />} /> {}
       </Routes>
     </BrowserRouter>
   );

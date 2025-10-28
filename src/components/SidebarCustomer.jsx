@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Layout, Menu } from "antd";
-import { UserOutlined, HistoryOutlined, LogoutOutlined, ProfileOutlined } from "@ant-design/icons"; // Tambahkan ProfileOutlined
+import { DashboardOutlined, UserOutlined, HistoryOutlined, LogoutOutlined, ProfileOutlined, ShoppingOutlined } from "@ant-design/icons"; // Tambahkan ShoppingOutlined untuk ikon title
 import { useNavigate, useLocation } from "react-router-dom";
 
 const { Header } = Layout;
@@ -11,12 +11,11 @@ export default function TopNavbar() {
   const [selectedKey, setSelectedKey] = useState("dashboard-customers");
 
   useEffect(() => {
-    // Sesuaikan selectedKey dengan path saat ini, termasuk path baru untuk profil
     if (location.pathname === "/dashboard-customers") {
       setSelectedKey("dashboard-customers");
     } else if (location.pathname === "/riwayat-transaksi") {
       setSelectedKey("riwayat-transaksi");
-    } else if (location.pathname === "/profil") { // Tambahkan kondisi untuk profil
+    } else if (location.pathname === "/profil") { 
       setSelectedKey("profil");
     } else {
       setSelectedKey("");
@@ -33,9 +32,9 @@ export default function TopNavbar() {
   };
 
   const menuItems = [
-    { key: "dashboard-customers", icon: <UserOutlined />, label: "Dashboard" },
+    { key: "dashboard-customers", icon: <DashboardOutlined/>, label: "Dashboard" },
     { key: "riwayat-transaksi", icon: <HistoryOutlined />, label: "Riwayat Transaksi" },
-    { key: "profil", icon: <ProfileOutlined />, label: "Profil" }, // Item menu baru untuk Profil
+    { key: "profil", icon: <UserOutlined />, label: "Profil" }, 
     { key: "logout", icon: <LogoutOutlined />, label: "Keluar" },
   ];
 
@@ -52,9 +51,27 @@ export default function TopNavbar() {
         top: 0,
         zIndex: 1000,
         boxShadow: '0 4px 12px rgba(0,0,0,0.12)',
+        transition: 'all 0.3s ease', // Tambahkan transisi untuk efek halus
       }}
     >
-      <div style={{ flex: 2, textAlign: 'left', color: 'white', fontWeight: 700, fontSize: 18 }}>
+      {/* Tambahkan ikon ke title dan buat lebih menarik dengan hover effect */}
+      <div 
+        style={{ 
+          flex: 2, 
+          textAlign: 'left', 
+          color: 'white', 
+          fontWeight: 700, 
+          fontSize: 18, 
+          display: 'flex', 
+          alignItems: 'center', 
+          cursor: 'pointer', // Tambahkan cursor pointer untuk interaktivitas
+          transition: 'transform 0.2s ease', // Efek hover pada title
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'} // Efek zoom saat hover
+        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+        onClick={() => navigate('/dashboard-customers')} // Klik title untuk kembali ke dashboard
+      >
+        <ShoppingOutlined style={{ marginRight: 8, fontSize: 20 }} /> {/* Ikon untuk title */}
         E-Commerce Dashboard
       </div>
 
@@ -68,16 +85,25 @@ export default function TopNavbar() {
         onClick={handleMenuClick}
         className="custom-top-menu"
       />
-
-      {/* Style khusus untuk item aktif */}
+      
+      {/* Style yang diperbarui untuk efek lebih menarik */}
       <style>
         {`
+          .custom-top-menu .ant-menu-item {
+            transition: all 0.3s ease; /* Transisi halus untuk semua item menu */
+          }
+          .custom-top-menu .ant-menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.1) !important; /* Efek hover yang lebih halus */
+            transform: translateY(-2px); /* Efek lift saat hover */
+          }
           .custom-top-menu .ant-menu-item-selected {
             background-color: rgba(255, 255, 255, 0.2) !important;
             color: white !important;
+            border-bottom: 2px solid white; /* Tambahkan border bawah untuk highlight */
           }
           .custom-top-menu .ant-menu-item-selected:hover {
             background-color: rgba(255, 255, 255, 0.3) !important;
+            transform: translateY(-2px); /* Efek lift yang konsisten */
           }
         `}
       </style>

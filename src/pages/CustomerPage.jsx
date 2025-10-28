@@ -11,7 +11,7 @@ import {
   Input,
 } from "antd";
 import { TeamOutlined, SearchOutlined } from "@ant-design/icons";
-import SidebarMenu from "../components/SidebarMenu"; // ✅ Sidebar terpisah
+import SidebarMenu from "../components/SidebarMenu"; 
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
