@@ -9,10 +9,35 @@
     },
     {
       "id": "2",
-      "username": "staff",
-      "password": "staff123",
-      "name": "Staff Operator",
+      "username": "superadmin",
+      "password": "super123",
+      "name": "Super Admin",
+      "role": "superadmin"
+    },
+    {
+      "id": "3",
+      "username": "dewi",
+      "password": "dewi123",
+      "name": "Dewi Anggraini",
+      "email": "dewi@company.com",
+      "phone": "08123456789",
       "role": "staff"
+    },
+    {
+      "id": "4",
+      "username": "rizal",
+      "password": "rizal123",
+      "name": "Rizal Hidayat",
+      "email": "rizal@company.com",
+      "phone": "08135678901",
+      "role": "staff"
+    },
+    {
+      "id": "5",
+      "username": "budi",
+      "password": "budi123",
+      "name": "Budi Santoso",
+      "role": "customer"
     }
   ],
   "customers": [
@@ -121,28 +146,16 @@
   ],
   "transactions": [
     {
-      "id": "1",
-      "customerId": "1",
-      "customerName": "Budi Santoso",
-      "packageId": "3",
-      "packageName": "Paket Premium 10GB",
-      "quota": "10GB",
-      "price": 100000,
-      "transactionDate": "2024-10-25T10:30:00.000Z",
-      "status": "success",
-      "paymentMethod": "E-Wallet"
-    },
-    {
-      "id": "2",
-      "customerId": "2",
-      "customerName": "Siti Aminah",
+      "customerId": "5",
+      "customerName": "Eko Prasetyo",
       "packageId": "2",
       "packageName": "Paket Reguler 3GB",
       "quota": "3GB",
       "price": 35000,
-      "transactionDate": "2024-10-26T14:15:00.000Z",
+      "transactionDate": "2025-10-27T14:35:33.451Z",
       "status": "success",
-      "paymentMethod": "Transfer Bank"
+      "paymentMethod": "E-Wallet",
+      "id": "2"
     },
     {
       "id": "3",
@@ -215,6 +228,18 @@
       "transactionDate": "2025-10-27T13:28:43.587Z",
       "status": "success",
       "paymentMethod": "Tunai"
+    },
+    {
+      "id": "dc2b",
+      "customerId": "2",
+      "customerName": "Siti Aminah",
+      "packageId": "1",
+      "packageName": "Paket Hemat 1GB",
+      "quota": "1GB",
+      "price": 15000,
+      "transactionDate": "2025-10-28T02:09:37.550Z",
+      "status": "success",
+      "paymentMethod": "E-Wallet"
     }
   ]
 }
